@@ -1,0 +1,847 @@
+<!DOCTYPE html> 
+<html lang="fr"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Herison Ventso | Designer Graphique</title> 
+<style> 
+:root{ 
+  --bg:#000000; 
+  --card:#0a0f0a; 
+  --text:#e8f5e9; 
+  --muted:#6b7a6b; 
+  --accent:#00ff88; 
+  --accent2:#39ff14; 
+  --radius:16px; 
+  --shadow:0 0 20px rgba(0,255,136,0.15); 
+} 
+ 
+*{box-sizing:border-box;margin:0;padding:0} 
+html, body{
+  overflow-x: hidden;
+  width: 100%;
+}
+html{scroll-behavior:smooth} 
+body{ 
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif; 
+  background:var(--bg); 
+  color:var(--text); 
+  line-height:1.6; 
+} 
+ 
+.container{max-width:1100px;margin:0 auto;padding:0 20px} 
+ 
+header{ 
+  position:fixed;top:0;z-index:1000; 
+  background:rgba(14,15,19,.7); 
+  backdrop-filter:blur(8px); 
+  border-bottom:1px solid rgba(255,255,255,.06); 
+  width: 100%;
+} 
+
+.nav{ 
+  display:flex;align-items:center;justify-content:space-between; 
+  padding:14px 0; 
+} 
+.logo{font-weight:800;letter-spacing:.5px} 
+.logo span{color:var(--accent)} 
+.nav a{ 
+  color:var(--text);text-decoration:none;margin-left:18px;font-size:.95rem; opacity: 0.8; transition: all 0.3s;
+} 
+.nav a:hover{color:var(--accent) !important; opacity: 1 !important;} 
+.nav a:active{color: var(--accent) !important; opacity: 1 !important; font-weight: 600 !important;}
+ 
+.menu-toggle{
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  z-index: 1001;
+}
+.hero{ 
+  padding:90px 0 60px; 
+  background:radial-gradient(1000px 400px at 80% -10%, rgba(0,255,136,.20), 
+transparent), 
+             radial-gradient(800px 300px at 10% 10%, rgba(57,255,20,.12), transparent); 
+} 
+.hero-wrap{
+    display:flex;align-items:center;gap:40px;justify-content:space-between;
+}
+.hero-text{flex:1;}
+.hero-photo{
+    flex-shrink:0;
+    width:260px;height:320px;
+    border-radius:24px;
+    border:3px solid rgba(0,255,136,.3);
+    box-shadow:0 0 25px rgba(0, 255, 136, .15);
+    overflow:hidden;
+}
+.hero-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:top center;
+}
+.hero h1{font-size:clamp(2.2rem,5vw,3.2rem);line-height:1.1;margin-bottom:14px} 
+.hero p{color:var(--muted);max-width:600px;margin-bottom:22px} 
+.btn{ 
+  display:inline-block;padding:12px;margin-right:18px;border-radius:12px; 
+  background:linear-gradient(135deg,var(--accent),var(--accent2)); 
+  color:#0b0d12;text-decoration:none;font-weight:700;border:0; 
+  box-shadow:var(--shadow); 
+} 
+.btn.ghost{ 
+  background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.15) 
+} 
+ 
+.grid{ 
+  display:grid;gap:18px; 
+  grid-template-columns:repeat(12,1fr); 
+} 
+.card{ 
+  background:var(--card); 
+  border:1px solid rgba(255,255,255,.06); 
+  border-radius:var(--radius); 
+  padding:18px; 
+  box-shadow:var(--shadow); 
+} 
+ 
+section{padding:60px 0} 
+section h2{font-size:1.8rem;margin-bottom:16px} 
+.muted{color:var(--muted)} 
+
+.about-intro{ 
+  max-width: 700px; 
+  font-size: 17px; 
+  line-height: 1.7; 
+  color: var(--muted); 
+  margin-bottom: 40px; 
+} 
+.about-timeline{display: flex; gap: 50px; margin-top: 20px; flex-wrap: wrap;} 
+.timeline-col{flex: 1; min-width: 320px;} 
+.timeline-col h3{ 
+  color: var(--primary);  
+  margin-bottom: 25px;  
+  font-size: 18px; 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+} 
+
+.timeline-col img{
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 5px var(--primary));
+}
+ 
+.timeline-item{ 
+  border-left: 2px solid rgba(0, 255, 136, .25); /* Ligne verte néon */ 
+  padding-left: 22px; 
+  margin-bottom: 30px; 
+  position: relative; 
+  transition: .3s; 
+} 
+.timeline-item:hover{border-color: var(--primary);} /* La ligne s'allume au survol */ 
+ 
+.timeline-item::before{ /* Le point néon */ 
+  content: ''; 
+  position: absolute; 
+  left: -8px; top: 4px; 
+  width: 14px; height: 14px; 
+  border-radius: 50%; 
+  background: var(--primary); 
+  box-shadow: 0 0 12px var(--primary); 
+  transition: .3s; 
+} 
+.timeline-item:hover::before{ 
+background: var(--accent); 
+box-shadow: 0 0 20px var(--accent); 
+} 
+.timeline-item .date{ 
+font-size: 12px;  
+color: var(--muted); 
+font-weight: 600; 
+letter-spacing: .5px; 
+} 
+.timeline-item h4{ 
+margin: 6px 0;  
+font-size: 16px; 
+color: var(--text); 
+} 
+.timeline-item p{ 
+margin: 0;  
+font-size: 14px;  
+color: var(--muted); 
+line-height: 1.6; 
+}
+ 
+.skills-category{margin-bottom: 50px;} 
+.skills-category h3{ 
+  font-size: 1.3rem;  
+  margin-bottom: 24px;  
+  color: var(--primary); 
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
+  font-weight: 600px;
+} 
+
+.skills-category img{
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+   border-radius: 4px;
+}
+
+.skills-grid{ 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px; 
+} 
+.skill{ 
+  display: flex; 
+  flex-direction: column; 
+  gap: 12px; 
+  background: rgba(255, 255, 255, 0.05); 
+  backdrop-filter: blur(10px);
+  padding: 20px; 
+  border-radius: 16px; 
+  border: 1px solid rgba(255,255,255,0.1); 
+  width: 100%;
+  min-width:unset;
+  transition: all 0.3s ease; 
+} 
+.skill:hover{transform: translateY(-4px); border-color: var(--accent); background: rgba(255, 255, 255, 0.08);} 
+.skill-head{display: flex; align-items: center; gap: 12px;} 
+.skill-head img{width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0;}
+.skill-head h4{
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600px;
+  color: #fff;
+} 
+
+.tags{ 
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-left: 4px;
+} 
+.tags span{
+  font-size: 0.9rem;
+  color: rgba(232, 245, 233, 0.85);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+}
+.tags span::before{
+  content: ".";
+  color: var(--accent);
+  font-size: 1.3rem;
+  line-height: 0;
+}
+.tags br{
+  display: none;
+}
+ 
+.projects{ 
+  display: grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); 
+  gap: 24px;
+  margin-top: 24px;
+} 
+.card.project{
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden; 
+  transition: all 0.3s ease;
+  padding: 0;
+  box-shadow: none;
+}
+.card.project:hover{
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+.card.project img{ 
+  width:100%;height: 200px;object-fit:cover; display: block;
+} 
+.card.project h3{margin:16px 16px 8px 16px;font-size:1.1rem; font-weight: 600;color: #fff !important;} 
+.card.project p.muted{
+  margin: 0 16px 16px 16px;
+  font-size: 0.9rem;
+  color: rgba(232, 245, 233, 0.75) !important;
+}
+.card.project a{
+  text-decoration: none;
+  display: block;
+}
+ 
+.contact form{ 
+  display:grid;gap:12px;max-width:600px 
+} 
+input,textarea{ 
+  width:100%;padding:12px 14px;border-radius:12px; 
+  background:#0f1218;border:1px solid rgba(255,255,255,.1); 
+  color:var(--text);outline:none; 
+} 
+input:focus,textarea:focus{border-color:var(--accent)} 
+
+.socials{
+    display: flex;
+    gap: 12px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.social-link{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    border-radius: 12px;
+    margin-right: 12px;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    background: #1a1a1a;
+    transition: all .3 ease;
+    flex: 0 1 auto;
+}
+.social-link:hover{
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(0, 255, 136, .6);
+    transform: translateY(-2px);
+}
+.social-link img{
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+ 
+footer{ 
+  padding:30px 0;border-top:1px solid rgba(255,255,255,.06); 
+  color:var(--muted);text-align:center;font-size:.9rem 
+} 
+ 
+/* Responsive */ 
+@media (max-width:768px){ 
+ /*.nav a{
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #fff;
+  display:none}
+ .container.nav0{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ } */
+ .menu-toggle{
+  display: block;
+ }
+ nav{
+  position: fixed;
+  top: 0;
+  right: -100%;
+  height: 100vh;
+  width: 70%;
+  max-width: 300px;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  transition: right 0.3s ease;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+ }
+ nav.active{
+  right: 0;
+ }
+ .logo{
+  margin-left: 16px;
+ }
+ .hero{padding:60px 0 40px} 
+ .hero-wrap{
+    flex-direction:column-reverse;
+    text-align:center;
+    gap:24px;
+ }
+ .hero-text p{margin:0 auto 22px}
+ .hero-photo{
+    width:200px;
+    height:240px;
+    margin:0 auto;
+ }
+ .hero-photo, .hero-photo img{
+    border-radius:50%;
+ }
+ .skills-grid{justify-content: center;}
+ .skill{
+    width: calc(50%-8px);
+    min-width: 150px;
+ }
+ .socials{
+  gap: 8px;
+  justify-content: flex-start;
+ }
+ .social-link{
+  padding: 6px 10px;
+  font-size: 12px;
+ }
+ .social-link img{
+  width: 18px;
+  height: 18px;
+ }
+}
+</style> 
+</head> 
+<body> 
+ 
+<header> 
+  <div class="container nav"> 
+    <div class="logo">HERISON<span> Ventso</span></div> 
+       <button class="menu-toggle" id="menu-toggle">☰</button> <!-- AJOUTE ÇA ICI -->
+    <nav> 
+      <a href="#about">À propos</a> 
+      <a href="#skills">Compétences</a> 
+      <a href="#work">Réalisations</a> 
+      <a href="#contact">Contact</a> 
+    </nav> 
+  </div> 
+</header> 
+ 
+<main> 
+  <section class="hero"> 
+    <div class="container hero-wrap"> 
+        <div class="hero-text">
+            <h1>Designer Graphique & UI<br>créative basé à Madagascar</h1> 
+            <p>Je conçois des identités visuelles, des interfaces et des rendus 3D qui marquent. Photoshop, Illustrator, Figma, Penpot, 3Ds Max.</p> 
+            <a href="#work" class="btn">Voir mes travaux</a> 
+            <a href="#contact" class="btn ghost">Me contacter</a> 
+        </div>
+        <div class="hero-photo">
+            <img src="Images/ventso-designer_graphique.png" alt="HERISON Ventso - Designer Graphique">
+        </div>
+    </div> 
+  </section> 
+ 
+ <section id="about" class="section"> 
+ <div class="container"> 
+  <h2>À propos</h2> 
+  <p class="about-intro"> 
+    Designer UI/UX et 3D basé à Madagascar. Je transforme des idées en interfaces  
+    claires et en visuels 3D impactants. Passionné par les outils open-source comme  
+    Penpot, Figma et 3Ds Max, avec une approche centrée sur le détail et l'expérience 
+utilisateur. 
+  </p> 
+ 
+  <div class="about-timeline"> 
+    <div class="timeline-col"> 
+      <h3><img src="icônes\parcours.png"> Parcours Académique</h3> 
+       
+      <div class="timeline-item"> 
+        <span class="date">2024-2026</span> 
+        <h4>Master en Communication Multimédia - En cours</h4> 
+        <p>EMIT - Fianarantsoa</p> 
+        <p>Compétences: UI/UX, Motion design, 3D, Montage Video.</p> 
+      </div> 
+ 
+      <div class="timeline-item"> 
+        <span class="date">2021 - 2024</span> 
+        <h4>Licence en Communication Multimédia</h4> 
+        <p>EMIT - Fianarantsoa</p>
+      </div> 
+       
+    </div> 
+
+    <div class="timeline-col"> 
+      <h3><img src="icônes/diplôme.png"> Diplomes</h3> 
+       
+      <div class="timeline-item"> 
+        <span class="date">Juillet 2025</span> 
+        <h4>Licence en Communication Multimédia</h4> 
+        <p>EMIT - Fianarantsoa</p> 
+      </div>
+
+      <div class="timeline-item"> 
+        <span class="date">2020</span> 
+        <h4>Baccalauréat Série Tertiaire</h4> 
+        <p>Lycée St Joseph - Antsirabe</p> 
+      </div>
+    </div>
+ 
+    <div class="timeline-col"> 
+      <h3><img src="icônes\experiences.png"> Expériences Professionnelles</h3> 
+       
+      <div class="timeline-item"> 
+        <span class="date">Août 2024 - Juin 2025</span> 
+        <h4>Designer Graphique</h4> 
+        <p>Tempus Donum - Création d'identité visuelle, maquettes, supports print & digital, UI pour 
+réseaux et site wordpress</p> 
+      </div> 
+ 
+      <div class="timeline-item"> 
+        <span class="date">Juin 2023 - Juillet 2023</span> 
+        <h4>Stagiaire Community Manager</h4> 
+        <p>I-VOTIKA - Antsirabe. Gestion des réseaux sociaux, création de contenu</p> 
+      </div> 
+    </div> 
+  </div> 
+ </div> 
+</section>
+ 
+ <section id="skills" class="section"> 
+ <div class="container"> 
+  <h2>Mes Compétences</h2> 
+   
+  <div class="skills-category"> 
+    <h3><img src="icônes\design.png"> Design & UI/UX</h3> 
+    <div class="skills-grid"> 
+      <div class="skill"> 
+        <div class="skill-head"> 
+          <img src="Images/figma.jpeg"> <h4>Figma</h4> </div> 
+          <div class="tags">
+            <span>Design System</span>
+            <span>Prototypage interactif</span>
+            <span>Maquettes responsives</span>
+          </div>
+        
+         
+      </div> 
+ 
+      <div class="skill"> 
+        <div class="skill-head"> 
+          <img src="Images/penpot.png"><h4>Penpot</h4></div>
+          <div class="tags">
+            <span>Design collaboratif</span>
+            <span>UI open-source</span>
+            <span>Wireframing</span>
+          </div>
+        
+        
+      </div> 
+
+      <div class="skill"> 
+        <div class="skill-head"> 
+          <img src="Images/Xd.png"><h4>Adobe XD</h4> </div>
+          <div class="tags">
+            <span>Prototypage UX</span>
+            <span>Animation UI</span>
+            <span>Design d'application mobile</span>
+          </div>
+        
+         
+      </div> 
+ 
+      <div class="skill"> 
+        <div class="skill-head"> 
+          <img src="Images/adobe-photoshop.png"><h4>Photoshop</h4></div>
+          <div class="tags">
+            <span>Retouche photo</span>
+            <span>Création de visuels</span>
+            <span>Mockups</span>
+          </div>
+         
+        
+      </div> 
+
+      <div class="skill"> 
+        <div class="skill-head"> 
+          <img src="Images/adobe-illustrator.png"><h4>Illustrator</h4></div>
+          <div class="tags">
+            <span>Création de logo</span>
+            <span>Vectoriel</span>
+            <span>Identité visuelle</span>
+          </div>
+         
+        
+      </div> 
+
+       <div class="skill"> 
+        <div class="skill-head"> 
+          <img src="Images/inkscape.jpg"><h4>Inkscape</h4></div> 
+          <div class="tags">
+            <span>Illustration Vectorielle</span>
+            <span>SVG pour web</span>
+            <span>Icônes</span>
+          </div> 
+        
+        
+      </div> 
+ 
+    </div> 
+  </div> 
+ 
+  <div class="skills-category"> 
+    <h3><img src="icônes\devfront.png"> Dev Front</h3> 
+    <div class="skills-grid"> 
+      <div class="skill"> 
+        <div class="skill-head">
+            <img src="Images/html5.jpeg"><h4>HTML5</h4></div> 
+          <div class="tags">
+            <span>Structure semantique</span>
+            <span>Accessibilité</span>
+            <span>Intégration web</span>
+          </div>
+        
+      </div> 
+      <div class="skill"> 
+        <div class="skill-head">
+            <img src="Images/css3.jpeg"><h4>CSS3</h4></div> 
+          <div class="tags">
+            <span>Flexbox & grid</span>
+            <span>Animations</span>
+            <span>Responsive design</span>
+          </div>
+        
+      </div> 
+      <div class="skill"> 
+        <div class="skill-head">
+            <img src="Images/javascript.jpeg"><h4>JavaScript</h4></div>
+          <div class="tags">
+            <span>DOM</span>
+            <span>Interactivité</span>
+          </div> 
+        
+      </div> 
+    </div> 
+  </div> 
+   
+  <div class="skills-category"> 
+    <h3><img src="icônes\3D.png"> 3D & Motion</h3> 
+    <div class="skills-grid"> 
+      <div class="skill"> 
+        <div class="skill-head">
+            <img src="Images/3DsMax.jpeg"><h4>3Ds Max</h4></div> 
+          <div class="tags">
+            <span>Modélisation 3D</span>
+            <span>Texturing</span>
+            <span>Rendu photorealiste</span>
+          </div>
+        
+      </div> 
+      
+    </div> 
+  </div> 
+
+   <div class="skills-category"> 
+    <h3><img src="icônes/montage-vidéo.png"> Montage video</h3> 
+    <div class="skills-grid"> 
+      <div class="skill"> 
+        <div class="skill-head">
+            <img src="Images/Davinci.png"><h4>Davinci Resolve</h4></div> 
+          <div class="tags">
+            <span>Etalonnage couleur</span>
+            <span>Montage</span>
+            <span>Effets visuels</span>
+          </div>
+       
+      </div> 
+      <div class="skill"> 
+        <div class="skill-head">
+            <img src="Images/premierepro.png"><h4>Adobe PremierPro</h4></div> 
+          <div class="tags">
+            <span>Montage vidéo</span>
+            <span>Habillage</span>
+            <span>Export pour réseaux</span>
+          </div>
+      </div> 
+      
+    </div> 
+  </div> 
+ 
+  <div class="skills-category"> 
+    <h3><img src="icônes\outils.png"> Outils</h3> 
+    <div class="skills-grid"> 
+      <div class="skill"> 
+        <div class="skill-head">
+            <img src="Images/Git.jpeg"><h4>Git</h4></div> 
+          <div class="tags">
+            <span>Versioning</span>
+            <span>GitHub</span>
+            <span>Déploiement</span>
+          </div>
+       
+      </div> 
+       <div class="skill"> 
+        <div class="skill-head">
+            <img src="Images/vercel.jpg"><h4>Vercel</h4></div> 
+          <div class="tags">
+            <span>Hébergement</span>
+            <span>Déploiement continu</span>
+            <span>Sites statiques</span>
+          </div>
+        
+      </div> 
+      <div class="skill"> 
+        <div class="skill-head">
+            <img src="Images/wordpress.jpeg"><h4>WordPress</h4></div> 
+          <div class="tags">
+            <span>Création de site</span>
+            <span>Thèmes</span>
+            <span>Elementor</span>
+          </div>
+        
+      </div> 
+      <div class="skill"> 
+        <div class="skill-head">
+            <img src="Images/wix.jpeg"><h4>Wix</h4></div> 
+          <div class="tags">
+            <span>Site vitrine</span>
+            <span>No-code</span>
+            <span>Design rapide</span>
+          </div>
+        
+      </div> 
+      <div class="skill"> 
+        <div class="skill-head">
+            <img src="Images/canva.jpg"><h4>Canva</h4></div> 
+          <div class="tags">
+            <span>Création de contenu</span>
+            <span>Templates</span>
+            <span>Identité de marque</span>
+          </div>
+        
+      </div>
+    </div> 
+  </div> 
+ 
+ </div> 
+</section> 
+ 
+  <section id="work"> 
+    <div class="container"> 
+      <h2>Réalisations</h2> 
+      <div class="grid projects"> 
+ 
+        <div class="card project"> 
+          <a href="Images/brand_guideline_cuizz'art.pdf" alt="Projet 2">
+            <img src="Images/Branding2.png" alt="Projet 2">
+          <h3 style="color: var(--text);">Identité Visuelle - Cuizz'art</h3> </a>
+          <p class="muted">Logo, charte couleur, packaging. Fait sur Inkscape + Photoshop + Canvas</p> 
+        </div> 
+ 
+        <div class="card project"> 
+          <a href="Images/archer-v3 (1).html" alt="Projet 2">
+            <img src="Images/appweb.png" alt="Projet 2">
+          <h3 style="color: var(--text);">Site web de location de voiture - html5 ccs3 javascript</h3> </a>
+          <p class="muted">Projet académique</p> 
+        </div> 
+
+        <div class="card project"> 
+          <a href="index.html" alt="Projet 3">
+            <img src="Images/portfolio.png" alt="Projet 3">
+          <h3 style="color: var(--text);">Portfolio - html5 ccs3 javascript</h3> </a>
+          <p class="muted">Projet académique</p> 
+        </div> 
+ 
+ 
+      </div> 
+    </div> 
+  </section> 
+ 
+  <section id="contact" class="contact"> 
+    <div class="container">  
+      <h2>On travaille ensemble?</h2>
+      <p>Disponible pour des missions de UI/UX, Design Graphique et 3D. Parlons de votre projet.</p>
+       <br>
+      <form action="https://formsubmit.co/ventsoherison@gmail.com" method="POST"> 
+            <input type="hidden" name="_subject" value="Nouveau message depuis ton site !"> 
+            <input type="hidden" name="_captcha" value="false"> 
+            <!---<input type="hidden" name="_next" value="https://ton-site.vercel.app/merci.html"> <!-- 
+            page de remerciement --> 
+            <input name="nom" type="text" placeholder="Ton nom" required> 
+            <input name="email" type="email" placeholder="Ton email" required> <!-- j'ai mis "email" au 
+            lieu de "mail" --> 
+            <textarea name="message" rows="5" placeholder="Ton message..." required></textarea> 
+            <button class="btn" type="submit">Envoyer</button> 
+            <p id="form-status" style="display: none; margin-top: 10px; color: var(--primary); font-weight: 600;"> Message envoyé</p>
+      </form>
+      <p class="muted" style="margin-top:14px">Email: ventsoherison@gmail.com | Tél: +261 33 74 875 16 / +261 38 18 558 23</p> 
+      
+      <div class="socials">
+        <a href="https://www.facebook.com/ventsoherison" target="_blank" class="social-link">
+            <img src="Images/facebook.png" alt="facebook"> Herison Ventso
+        </a>
+
+        <a href="https://wa.me/261381855823" target="_blank" class="social-link">
+            <img src="Images/whatsapp.png" alt="whatsapp"> +261 38 18 558 23
+        </a>
+        
+        <a href="https://www.instagram.com/ventso_mitantsoa" target="_blank" class="social-link">
+            <img src="Images/instagram.png" alt="instagram"> Ventso Mitantsoa
+        </a>
+      </div>
+    </div> 
+  </section> 
+</main> 
+ 
+<footer> 
+  <div class="container"> 
+    © 2026 HERISON Ventso. Portfolio Designer Graphique. 
+  </div> 
+</footer> 
+ 
+<script> 
+// Petit effet: active le lien de nav selon la section visible 
+const sections = document.querySelectorAll('section[id]'); 
+const navLinks = document.querySelectorAll('header nav a'); 
+ 
+window.addEventListener('scroll', () => { 
+let current = '';
+sections.forEach(sec => { 
+const top = window.scrollY; 
+const offset = sec.offsetTop - 80; 
+const height = sec.offsetHeight; 
+if(top >= offset && top < offset + height) current = sec.getAttribute('id'); 
+}); 
+navLinks.forEach(a => { 
+a.style.color = a.getAttribute('href').slice(1) === current? 'var(--text)' : 'var(--muted)'; 
+}); 
+}); 
+const menuToggle = document.getElementById('menu-toggle'); 
+const navMenu = document.querySelector('nav'); 
+menuToggle.addEventListener('click', () => { 
+navMenu.classList.toggle('active'); 
+menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰'; 
+}); 
+const form = document.getElementById('contact-form'); 
+const status = document.getElementById('form-status'); 
+ 
+form.addEventListener('submit', async (e) => { 
+  e.preventDefault(); // empêche la redirection 
+  const data = new FormData(form); 
+   
+  const response = await fetch(form.action, { 
+    method: 'POST', 
+    body: data, 
+    headers: { 'Accept': 'application/json' } 
+  }); 
+   
+  if (response.ok) { 
+    status.style.display = 'block'; // affiche le popup/texte 
+    form.reset(); // vide le formulaire 
+    setTimeout(() => { status.style.display = 'none'; }, 4000); // disparaît après 4s 
+  } else { 
+    alert("Oups, une erreur est survenue. Réessaye."); 
+  } 
+});
+</script> 
+</body> 
+</html> 
